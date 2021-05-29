@@ -1,25 +1,43 @@
-import logo from './logo.svg';
+import React, {useEffect, useState} from 'react';
+import {BrowserRouter, Switch, Route} from "react-router-dom";
+
 import './App.css';
+import {Container} from "react-bootstrap";
+import HomeView from "./Components/HomeView";
+import EquipmentView from "./Components/EquipmentView";
+import CategoryView from "./Components/CategoryView";
+import WorkoutView from "./Components/WorkoutView";
+import Navigation from "./Components/Navigation";
+import axios from 'axios';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const [equipment, setEquipment] = useState(['bodyweight','dumbbells'])
+    const [category, setCategory] = useState([])
+
+        return (
+       <BrowserRouter>
+           <Navigation />
+           <Container className="mt-4">
+
+               <Switch>
+                   <Route path="/home" exact>
+                       <HomeView />
+                   </Route>
+                   <Route path="/equipment" >
+                       <EquipmentView equipment={equipment} setEquipment={setEquipment}/>
+                   </Route>
+                   <Route path="/category" >
+                       <CategoryView />
+                   </Route>
+                   <Route path="/category/workout" >
+                       <WorkoutView />
+                   </Route>
+               </Switch>
+
+           </Container>
+       </BrowserRouter>
+    );
 }
 
 export default App;
