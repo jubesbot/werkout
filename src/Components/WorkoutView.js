@@ -2,27 +2,35 @@ import React, {useEffect} from 'react';
 import {Table} from "react-bootstrap";
 import axios from "axios";
 
-function WorkoutView({ saveFinal, workout, setWorkout }) {
+function WorkoutView({ saveFinal, workout, setWorkout,category }) {
 
     console.log(saveFinal)
 
-    // useEffect(()=>{
-    //     axios.get('https://wger.de/api/v2/exerciseinfo/?limit=1000&language=2')
-    //         .then(res=>{
-    //             setWorkout(res.data.results)
-    //         })
-    // },[setWorkout])
+    useEffect(()=>{
 
-    // let temp = [...workout]
-    // let foundIndex = temp.indexOf(saveFinal)
+        const firstBodyweight = axios.get(`https://wger.de/api/v2/exercise/?equipment=${saveFinal[0]}&category=${saveFinal[2]}&language=2`)
+        const secondBodyweight = axios.get(`https://wger.de/api/v2/exercise/?equipment=${saveFinal[0]}&category=${saveFinal[3]}&language=2`)
+        const thirdBodyweight = axios.get(`https://wger.de/api/v2/exercise/?equipment=${saveFinal[0]}&category=${saveFinal[4]}&language=2`)
 
+        const firstCat = axios.get(`https://wger.de/api/v2/exercise/?equipment=${saveFinal[1]}&category=${saveFinal[2]}&language=2`)
+        const secondCat = axios.get(`https://wger.de/api/v2/exercise/?equipment=${saveFinal[1]}&category=${saveFinal[3]}&language=2`)
+        const thirdCat = axios.get(`https://wger.de/api/v2/exercise/?equipment=${saveFinal[1]}&category=${saveFinal[4]}&language=2`)
 
+        axios.all([firstBodyweight, secondBodyweight, thirdBodyweight, firstCat, secondCat, thirdCat])
+            .then(res=>{
+                setWorkout(prevState => [...prevState, ...res[0].data.results, ...res[1].data.results, ...res[2].data.results, ...res[3].data.results, ...res[4].data.results, ...res[5].data.results])
+            })
+    },[])
 
-    console.log(workout)
+    let uniqueWorkout = workout.filter( (ele, index) => index === workout.findIndex( elem => elem.id === ele.id && elem.id === ele.id))
+
+    console.log(uniqueWorkout)
+    // console.log(Math.floor(Math.random()*(uniqueWorkout.length)+1))
+    // console.log(uniqueWorkout[4].name)
 
     return (
         <div>
-            <h1>30min xxx and yyy workout with zzz.</h1>
+            <h1>30min Workout.</h1>
             <Table striped bordered hover>
                 <thead>
                 <tr>
@@ -39,44 +47,44 @@ function WorkoutView({ saveFinal, workout, setWorkout }) {
                     <td>-</td>
                     <td>-</td>
                 </tr>
-                <tr>
-                    <td>xxx</td>
-                    <td>40s</td>
-                    <td>20s</td>
-                    <td rowSpan='3'>3</td>
-                </tr>
-                <tr>
-                    <td>yyy</td>
-                    <td>40s</td>
-                    <td>20s</td>
-                </tr>
-                <tr>
-                    <td>xxx</td>
-                    <td>40s</td>
-                    <td>20s</td>
-                </tr>
-                <tr>
-                    <td>Water Break</td>
-                    <td>-</td>
-                    <td>1min</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td>yyy</td>
-                    <td>40s</td>
-                    <td>20s</td>
-                    <td rowSpan='3'>3</td>
-                </tr>
-                <tr>
-                    <td>xxx</td>
-                    <td>40s</td>
-                    <td>20s</td>
-                </tr>
-                <tr>
-                    <td>yyy</td>
-                    <td>40s</td>
-                    <td>20s</td>
-                </tr>
+                {/*<tr>*/}
+                {/*    <td>{uniqueWorkout[Math.floor(Math.random()*uniqueWorkout.length)].name}</td>*/}
+                {/*    <td>40s</td>*/}
+                {/*    <td>20s</td>*/}
+                {/*    <td rowSpan='3'>3</td>*/}
+                {/*</tr>*/}
+                {/*<tr>*/}
+                {/*    <td>{uniqueWorkout[Math.floor(Math.random()*uniqueWorkout.length)].name}</td>*/}
+                {/*    <td>40s</td>*/}
+                {/*    <td>20s</td>*/}
+                {/*</tr>*/}
+                {/*<tr>*/}
+                {/*    <td>{uniqueWorkout[Math.floor(Math.random()*uniqueWorkout.length)].name}</td>*/}
+                {/*    <td>40s</td>*/}
+                {/*    <td>20s</td>*/}
+                {/*</tr>*/}
+                {/*<tr>*/}
+                {/*    <td>Water Break</td>*/}
+                {/*    <td>-</td>*/}
+                {/*    <td>1min</td>*/}
+                {/*    <td>-</td>*/}
+                {/*</tr>*/}
+                {/*<tr>*/}
+                {/*    <td>{uniqueWorkout[Math.floor(Math.random()*uniqueWorkout.length)].name}</td>*/}
+                {/*    <td>40s</td>*/}
+                {/*    <td>20s</td>*/}
+                {/*    <td rowSpan='3'>3</td>*/}
+                {/*</tr>*/}
+                {/*<tr>*/}
+                {/*    <td>{uniqueWorkout[Math.floor(Math.random()*uniqueWorkout.length)].name}</td>*/}
+                {/*    <td>40s</td>*/}
+                {/*    <td>20s</td>*/}
+                {/*</tr>*/}
+                {/*<tr>*/}
+                {/*    <td>{uniqueWorkout[Math.floor(Math.random()*uniqueWorkout.length)].name}</td>*/}
+                {/*    <td>40s</td>*/}
+                {/*    <td>20s</td>*/}
+                {/*</tr>*/}
                 <tr>
                     <td>Water Break</td>
                     <td>-</td>

@@ -6,7 +6,7 @@ function EquipmentView({equipment, setEquipment}) {
     function selectEquipment(e) {
         e.stopPropagation()
         if(equipment.length<1)
-        setEquipment(prevState => [...prevState, (e.target.name)])
+        setEquipment(prevState => [...prevState, 7, Number(e.target.value)])
     }
     console.log(equipment)
 
@@ -23,7 +23,7 @@ function EquipmentView({equipment, setEquipment}) {
                                 Your workout will consist of body weight exercises only.
                             </Card.Text>
                             <NavLink to='/category' onClick={selectEquipment}>
-                                <Button variant="primary" name='bodyweight'>Go somewhere</Button>
+                                <Button variant="primary" value={7}>Go somewhere</Button>
                             </NavLink>
                         </Card.Body>
                     </Card>
@@ -38,7 +38,7 @@ function EquipmentView({equipment, setEquipment}) {
                                 Your workout will consist of body weight and dumbbell exercises.
                             </Card.Text>
                             <NavLink to='/category' onClick={selectEquipment}>
-                                <Button variant="primary" name='dumbbells'>Go somewhere</Button>
+                                <Button variant="primary" value={3}>Go somewhere</Button>
                             </NavLink>
                         </Card.Body>
                     </Card>

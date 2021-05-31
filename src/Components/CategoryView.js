@@ -13,18 +13,18 @@ function CategoryView({ equipment, category, setCategory, saveFinal, setSaveFina
             })
     },[setCategory])
 
-    function selectCategory(e, name) {
+    function selectCategory(e, id) {
         e.stopPropagation()
         // console.log(name)
         let temp = [...saveFinal]
-        let foundIndex = temp.indexOf(name)
+        let foundIndex = temp.indexOf(id)
         // console.log("found index",foundIndex)
-        if(temp.length === 2 && foundIndex > 0) {
+        if(temp.length === 3 && foundIndex > 0) {
             temp.splice(foundIndex, 1)
         }if (foundIndex > -1) {
             temp.splice(foundIndex, 1)
-        } else if (foundIndex < 0 && temp.length < 2){
-            temp.push(name)
+        } else if (foundIndex < 0 && temp.length < 3){
+            temp.push(id)
         }
         setSaveFinal(temp)
 
@@ -41,14 +41,14 @@ function CategoryView({ equipment, category, setCategory, saveFinal, setSaveFina
     return (
         <div>
 
-            <h1>WHAT PART OF THE BODY? (Pick 2)</h1>
+            <h1>WHAT PART OF THE BODY? (Pick 3)</h1>
 
             <CardDeck>
                 {category.map(part => (
                 <Card key={part.id}>
                     <Card.Img variant="top" src=''/>
                     <Card.Body>
-                        <Card.Title onClick={(e) => selectCategory(e, part.name)} className={part.name}>
+                        <Card.Title onClick={(e) => selectCategory(e, part.id)}>
                             {part.name}
                         </Card.Title>
                     </Card.Body>
