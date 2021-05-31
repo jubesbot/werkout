@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {BrowserRouter, Switch, Route} from "react-router-dom";
 
 import './App.css';
@@ -8,12 +8,13 @@ import EquipmentView from "./Components/EquipmentView";
 import CategoryView from "./Components/CategoryView";
 import WorkoutView from "./Components/WorkoutView";
 import Navigation from "./Components/Navigation";
-import axios from 'axios';
 
 function App() {
 
-    const [equipment, setEquipment] = useState(['bodyweight','dumbbells'])
+    const [equipment, setEquipment] = useState([])
     const [category, setCategory] = useState([])
+    const [workout, setWorkout] = useState([])
+    const [saveFinal, setSaveFinal] = useState([])
 
         return (
        <BrowserRouter>
@@ -28,10 +29,10 @@ function App() {
                        <EquipmentView equipment={equipment} setEquipment={setEquipment}/>
                    </Route>
                    <Route path="/category" >
-                       <CategoryView />
+                       <CategoryView category={category} setCategory={setCategory} saveFinal={saveFinal} setSaveFinal={setSaveFinal} equipment={equipment}/>
                    </Route>
-                   <Route path="/category/workout" >
-                       <WorkoutView />
+                   <Route path="/workout" >
+                       <WorkoutView workout={workout} setWorkout={setWorkout} setSaveFinal={setSaveFinal} saveFinal={saveFinal}/>
                    </Route>
                </Switch>
 
