@@ -22,17 +22,32 @@ function App() {
            <Container className="mt-4">
 
                <Switch>
-                   <Route path="/home" exact>
+                   <Route path="/" exact>
                        <HomeView />
                    </Route>
                    <Route path="/equipment" >
-                       <EquipmentView equipment={equipment} setEquipment={setEquipment}/>
+                       <EquipmentView
+                           equipment={equipment}
+                           setEquipment={setEquipment}
+                       />
                    </Route>
                    <Route path="/category" >
-                       <CategoryView category={category} setCategory={setCategory} saveFinal={saveFinal} setSaveFinal={setSaveFinal} equipment={equipment}/>
+                       <CategoryView
+                           category={category}
+                           setCategory={setCategory}
+                           saveFinal={saveFinal}
+                           setSaveFinal={setSaveFinal}
+                           equipment={equipment}
+                       />
                    </Route>
                    <Route path="/workout" >
-                       <WorkoutView workout={workout} setWorkout={setWorkout} setSaveFinal={setSaveFinal} saveFinal={saveFinal}/>
+                       <WorkoutView
+                           workout={workout}
+                           setWorkout={setWorkout}
+                           setSaveFinal={setSaveFinal}
+                           saveFinal={saveFinal}
+                           category={category}
+                       />
                    </Route>
                </Switch>
 

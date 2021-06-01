@@ -12,7 +12,7 @@ function EquipmentView({equipment, setEquipment}) {
 
     return (
         <div>
-            <h1>WHAT EQUIPMENT ARE YOU USING?</h1>
+            <h1 className='text-center'>WHAT EQUIPMENT ARE YOU USING?</h1>
             <Row>
                 <Col md={6}>
                     <Card>
@@ -23,7 +23,7 @@ function EquipmentView({equipment, setEquipment}) {
                                 Your workout will consist of body weight exercises only.
                             </Card.Text>
                             <NavLink to='/category' onClick={selectEquipment}>
-                                <Button variant="primary" value={7}>Go somewhere</Button>
+                                <Button variant="outline-dark light" value={7}>Let's go!</Button>
                             </NavLink>
                         </Card.Body>
                     </Card>
@@ -38,7 +38,7 @@ function EquipmentView({equipment, setEquipment}) {
                                 Your workout will consist of body weight and dumbbell exercises.
                             </Card.Text>
                             <NavLink to='/category' onClick={selectEquipment}>
-                                <Button variant="primary" value={3}>Go somewhere</Button>
+                                <Button variant="outline-dark light" value={3}>Try me!</Button>
                             </NavLink>
                         </Card.Body>
                     </Card>
