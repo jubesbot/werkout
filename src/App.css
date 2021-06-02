@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+
+.tooltip .tooltip-inner {
+  width: 400px;
+  white-space: normal;
+}

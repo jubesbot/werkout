@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {Button, Modal, Table} from "react-bootstrap";
+import {Button, OverlayTrigger, Table, Tooltip} from "react-bootstrap";
 import axios from "axios";
 
-function WorkoutView({ saveFinal, workout, setWorkout,category, setSaveFinal }) {
+function WorkoutView({saveFinal, setSaveFinal, workout, setWorkout, setRefresh, refresh}) {
 
-    useEffect(()=>{
+    useEffect(() => {
 
         const firstBodyweight = axios.get(`https://wger.de/api/v2/exercise/?equipment=${saveFinal[0]}&category=${saveFinal[2]}&language=2`)
         const secondBodyweight = axios.get(`https://wger.de/api/v2/exercise/?equipment=${saveFinal[0]}&category=${saveFinal[3]}&language=2`)
@@ -15,38 +15,72 @@ function WorkoutView({ saveFinal, workout, setWorkout,category, setSaveFinal }) 
         const thirdCat = axios.get(`https://wger.de/api/v2/exercise/?equipment=${saveFinal[1]}&category=${saveFinal[4]}&language=2`)
 
         axios.all([firstBodyweight, secondBodyweight, thirdBodyweight, firstCat, secondCat, thirdCat])
-            .then(res=>{
-                setWorkout(prevState => [
-                    ...prevState,
-                    ...res[0].data.results,
+            .then(res => {
+                let tempWorkout = [...res[0].data.results,
                     ...res[1].data.results,
                     ...res[2].data.results,
                     ...res[3].data.results,
                     ...res[4].data.results,
-                    ...res[5].data.results
-                ])
+                    ...res[5].data.results]
+                console.log(tempWorkout)
+
+                let uniqueWorkout = tempWorkout.filter((ele, idx) => idx === tempWorkout.findIndex(elem => elem.id === ele.id && elem.id === ele.id))
+                console.log(uniqueWorkout)
+                let orderWorkout = []
+
+                for (let i = 0; i < 6; i++) {
+                    orderWorkout.push(...uniqueWorkout.splice((Math.floor(Math.random() * (uniqueWorkout.length))), 1))
+                }
+                console.log(orderWorkout)
+
+                setWorkout(orderWorkout)
+                // function findDuplicates(arr) {
+                //     const filtered = arr.filter((item, index) => arr.indexOf(item) !== index);
+                //     return [...new Set(filtered)]
+                // }
+                // let uniqueWorkout = findDuplicates(tempWorkout)
+
+                // function delDupes(data, key){
+                //     return [
+                //         ...new Map(
+                //             data.map(x => [key(x),x])
+                //         ).values()
+                //     ]
+                // }
+                // let uniqueWorkout = delDupes(tempWorkout, it => it.id)
+                // console.log(uniqueWorkout)
+
+                // const uniqueWorkout = tempWorkout.reduce((acc, current) => {
+                //     const x = acc.find(item => item.id === current.id);
+                //     if (!x) {
+                //         return acc.concat([current]);
+                //     } else {
+                //         return acc;
+                //     }
+                // }, []);
+                // console.log(uniqueWorkout)
             })
 
-    },[setWorkout,saveFinal])
+    }, [setWorkout, setSaveFinal, refresh])
 
-    let uniqueWorkout = workout.filter( (ele, idx) => idx === workout.findIndex( elem => elem.id === ele.id && elem.id === ele.id))
-
-    function refresh(){
-        setSaveFinal(prevState => [...prevState])
+    function createMarkup(x) {
+        return {__html: `${(workout && workout.length !== 0) ? workout[x].description : 'Loading...'}`}
     }
 
-    const [show, setShow] = useState(false);
+    function softRefresh() {
+        setRefresh(prevState => !prevState)
+        console.log(refresh)
+    }
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    // console.log(workout)
 
-    console.log(saveFinal)
-    console.log(category)
+    // console.log(saveFinal)
+    // console.log(category)
 
     return (
         <div>
             <h1 className='text-center'>30min Workout</h1>
-            <Table striped bordered variant="dark">
+            <Table striped bordered variant="dark" size='sm'>
                 <thead>
                 <tr className='text-center'>
                     <th>Activity</th>
@@ -59,44 +93,92 @@ function WorkoutView({ saveFinal, workout, setWorkout,category, setSaveFinal }) 
                 <tr>
                     <td colSpan={4} className='text-center'>Warm Up (5min)</td>
                 </tr>
-                <tr>
-                    <td className='font-weight-bold' onMouseOver={handleShow}>{(uniqueWorkout && uniqueWorkout.length !== 0) ? uniqueWorkout[Math.floor(Math.random()*(uniqueWorkout.length))].name : 'Loading...'}
-                        <Modal show={show} onHide={handleClose}>
-                            <Modal.Header closeButton>
-                                <Modal.Title>{uniqueWorkout[Math.floor(Math.random()*(uniqueWorkout.length))].description}</Modal.Title>
-                            </Modal.Header>
-                        </Modal>
-                    </td>
+                <tr className='text-warning'>
+                    <OverlayTrigger
+                        placement="right"
+                        delay={{show: 0, hide: 0}}
+                        overlay={
+                            <Tooltip>
+                                <div dangerouslySetInnerHTML={createMarkup(0)}></div>
+                            </Tooltip>
+                        }>
+                        <td>{(workout && workout.length !== 0) ? workout[0].name : 'Loading...'}</td>
+                    </OverlayTrigger>
                     <td>40s</td>
                     <td>20s</td>
                     <td rowSpan='3' className='text-center align-middle'>3</td>
                 </tr>
-                <tr>
-                    <td className='font-weight-bold'>{(uniqueWorkout && uniqueWorkout.length !== 0) ? uniqueWorkout[Math.floor(Math.random()*(uniqueWorkout.length))].name : 'Loading...'}</td>
+                <tr className='text-warning'>
+                    <OverlayTrigger
+                        placement="right"
+                        delay={{show: 0, hide: 0}}
+                        overlay={
+                            <Tooltip>
+                                <div dangerouslySetInnerHTML={createMarkup(1)}></div>
+                            </Tooltip>
+                        }>
+                        <td>{(workout && workout.length !== 0) ? workout[1].name : 'Loading...'}</td>
+                    </OverlayTrigger>
                     <td>40s</td>
                     <td>20s</td>
                 </tr>
-                <tr>
-                    <td className='font-weight-bold'>{(uniqueWorkout && uniqueWorkout.length !== 0) ? uniqueWorkout[Math.floor(Math.random()*(uniqueWorkout.length))].name : 'Loading...'}</td>
+                <tr className='text-warning'>
+                    <OverlayTrigger
+                        placement="right"
+                        delay={{show: 0, hide: 0}}
+                        overlay={
+                            <Tooltip>
+                                <div dangerouslySetInnerHTML={createMarkup(2)}></div>
+                            </Tooltip>
+                        }>
+                        <td>{(workout && workout.length !== 0) ? workout[2].name : 'Loading...'}</td>
+                    </OverlayTrigger>
                     <td>40s</td>
                     <td>20s</td>
                 </tr>
                 <tr>
                     <td colSpan={4} className='text-center'>Water Break (1min)</td>
                 </tr>
-                <tr>
-                    <td className='font-weight-bold'>{(uniqueWorkout && uniqueWorkout.length !== 0) ? uniqueWorkout[Math.floor(Math.random()*(uniqueWorkout.length))].name : 'Loading...'}</td>
+                <tr className='text-warning'>
+                    <OverlayTrigger
+                        placement="right"
+                        delay={{show: 0, hide: 0}}
+                        overlay={
+                            <Tooltip>
+                                <div dangerouslySetInnerHTML={createMarkup(3)}></div>
+                            </Tooltip>
+                        }>
+                        <td>{(workout && workout.length !== 0) ? workout[3].name : 'Loading...'}</td>
+                    </OverlayTrigger>
                     <td>40s</td>
                     <td>20s</td>
                     <td rowSpan='3' className='text-center align-middle'>3</td>
                 </tr>
-                <tr>
-                    <td className='font-weight-bold'>{(uniqueWorkout && uniqueWorkout.length !== 0) ? uniqueWorkout[Math.floor(Math.random()*(uniqueWorkout.length))].name : 'Loading...'}</td>
+                <tr className='text-warning'>
+                    <OverlayTrigger
+                        placement="right"
+                        delay={{show: 0, hide: 0}}
+                        overlay={
+                            <Tooltip>
+                                <div dangerouslySetInnerHTML={createMarkup(4)}></div>
+                            </Tooltip>
+                        }>
+                        <td>{(workout && workout.length !== 0) ? workout[4].name : 'Loading...'}</td>
+                    </OverlayTrigger>
                     <td>40s</td>
                     <td>20s</td>
                 </tr>
-                <tr>
-                    <td className='font-weight-bold'>{(uniqueWorkout && uniqueWorkout.length !== 0) ? uniqueWorkout[Math.floor(Math.random()*(uniqueWorkout.length))].name : 'Loading...'}</td>
+                <tr className='text-warning'>
+                    <OverlayTrigger
+                        placement="right"
+                        delay={{show: 0, hide: 0}}
+                        overlay={
+                            <Tooltip>
+                                <div dangerouslySetInnerHTML={createMarkup(5)}></div>
+                            </Tooltip>
+                        }>
+                        <td>{(workout && workout.length !== 0) ? workout[5].name : 'Loading...'}</td>
+                    </OverlayTrigger>
                     <td>40s</td>
                     <td>20s</td>
                 </tr>
@@ -108,7 +190,8 @@ function WorkoutView({ saveFinal, workout, setWorkout,category, setSaveFinal }) 
                 </tr>
                 </tbody>
             </Table>
-            <Button variant="dark" onClick={refresh}>Refresh Exercises</Button>
+
+            <Button variant="dark" onClick={softRefresh}>Refresh Exercises</Button>
 
         </div>
     );

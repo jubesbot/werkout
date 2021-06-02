@@ -47,7 +47,7 @@ function CategoryView({ equipment, category, setCategory, saveFinal, setSaveFina
     return (
         <div>
 
-            <h1>Where do you want to work on? (Pick 3)</h1>
+            <h1 className='text-center'>What do you want to work on? (Pick 3)</h1>
 
             <CardDeck>
                 {category.map(part => (
@@ -59,8 +59,8 @@ function CategoryView({ equipment, category, setCategory, saveFinal, setSaveFina
             </CardDeck>
 
             <hr/>
-            <NavLink to='/workout' onClick={goToWorkout} >
-                <Button variant="dark" disabled={saveFinal.length<3}>Generate Workout</Button>
+            <NavLink to='/workout' onClick={goToWorkout}>
+                <Button variant="dark" disabled={saveFinal.length<3} >Generate Workout</Button>
             </NavLink>
 
         </div>

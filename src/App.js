@@ -15,6 +15,7 @@ function App() {
     const [category, setCategory] = useState([])
     const [workout, setWorkout] = useState([])
     const [saveFinal, setSaveFinal] = useState([])
+    const [refresh, setRefresh] = useState(true)
 
         return (
        <BrowserRouter>
@@ -47,6 +48,8 @@ function App() {
                            setSaveFinal={setSaveFinal}
                            saveFinal={saveFinal}
                            category={category}
+                           setRefresh={setRefresh}
+                           refresh={refresh}
                        />
                    </Route>
                </Switch>

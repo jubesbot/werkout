@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.tooltip .tooltip-inner {
+  width: 400px;
+  white-space: normal;
+}
