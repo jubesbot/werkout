@@ -47,11 +47,11 @@ function CategoryView({equipment, category, setCategory, saveFinal, setSaveFinal
 
     return (
         <div className="container-fluid homepage-bg">
-            <h1 className='text-center text-warning pt-2 pb-0'>What do you want to work on? (Pick 3)</h1>
+            <h1 className='text-center text-warning pt-1 pb-0'>What do you want to work on? (Pick 3)</h1>
 
             <CardDeck>
                 {category.map(part => (
-                    <Col key={part.id} md={3} className="p-2 mx-auto">
+                    <Col key={part.id} md={3} className="p-1 mx-auto">
                         <Card className="bg-warning text-white">
                             <Card.Img src={part.image} alt="Card image"/>
                             <Button className='mt-2 mb-2' variant="none"
