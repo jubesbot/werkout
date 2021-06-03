@@ -4,10 +4,10 @@ import {Container, Navbar} from "react-bootstrap";
 function Navigation(props) {
 
     return (
-        <Navbar bg="dark" expand="lg">
+        <Navbar bg="warning" expand="lg">
             <Container>
-                <Navbar.Brand href="/"  className='mx-auto' style={{ fontFamily: 'Budmo Jiggler', fontSize: '4em', color: 'white'}}>
-                    WERKOUT
+                <Navbar.Brand href="/"  className='mx-auto' style={{ fontFamily: 'Budmo Jiggler', fontSize: '4em', color: 'black'}}>
+                    💦🏋🏼💪🏽 WERKOUT 💪🏽‍️🏋🏽‍️💦
                 </Navbar.Brand>
             </Container>
         </Navbar>

@@ -46,16 +46,16 @@ function CategoryView({equipment, category, setCategory, saveFinal, setSaveFinal
     console.log(saveFinal)
 
     return (
-        <div>
-            <h1 className='text-center pb-3'>What do you want to work on? (Pick 3)</h1>
+        <div className="container-fluid homepage-bg">
+            <h1 className='text-center text-warning'>What do you want to work on? (Pick 3)</h1>
 
             <CardDeck>
                 {category.map(part => (
                     <Col key={part.id} md={3} className="p-2 mx-auto">
-                        <Card className="bg-transparent text-white">
+                        <Card className="bg-warning text-white">
                             <Card.Img src={part.image} alt="Card image"/>
-                            <Button className='mt-3 mb-3' variant="none"
-                                    style={{ fontSize: '1.5em'}}
+                            <Button className='mt-2 mb-2' variant="none"
+                                    style={{fontSize: '1.5em'}}
                                     onClick={(e) => selectCategory(e, part.id)}>{part.name}</Button>
                         </Card>
                     </Col>
@@ -63,8 +63,9 @@ function CategoryView({equipment, category, setCategory, saveFinal, setSaveFinal
             </CardDeck>
 
             <br/>
+
             <NavLink to='/workout' onClick={goToWorkout} className='row justify-content-center text-decoration-none'>
-                <Button variant="dark" disabled={saveFinal.length < 3}>Generate Workout</Button>
+                <Button variant="danger" disabled={saveFinal.length < 3}>Generate Workout</Button>
             </NavLink>
 
         </div>

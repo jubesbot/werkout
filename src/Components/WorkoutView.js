@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {Button, OverlayTrigger, Table, Tooltip} from "react-bootstrap";
+import {Button, Col, Container, OverlayTrigger, Table, Tooltip} from "react-bootstrap";
 import axios from "axios";
 
 function WorkoutView({saveFinal, setSaveFinal, workout, setWorkout, setRefresh, refresh}) {
@@ -49,124 +49,133 @@ function WorkoutView({saveFinal, setSaveFinal, workout, setWorkout, setRefresh, 
     }
 
     return (
-        <div>
-            <h1 className='text-center pb-3'>Let's Get Moving!</h1>
-            <Table striped bordered variant="dark" size='sm' style={{fontSize: 'large'}}>
-                <thead>
-                <tr className='text-center'>
-                    <th>Activity</th>
-                    <th>Work</th>
-                    <th>Rest</th>
-                    <th>Sets</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td colSpan={4} className='text-center'>Warm Up (5min)</td>
-                </tr>
-                <tr className='text-warning'>
-                    <OverlayTrigger
-                        placement="right"
-                        delay={{show: 0, hide: 0}}
-                        overlay={
-                            <Tooltip>
-                                <div dangerouslySetInnerHTML={createMarkup(0)}></div>
-                            </Tooltip>
-                        }>
-                        <td>{(workout && workout.length !== 0) ? workout[0].name : 'Loading...'}</td>
-                    </OverlayTrigger>
-                    <td>40s</td>
-                    <td>20s</td>
-                    <td rowSpan='3' className='text-center align-middle'>3</td>
-                </tr>
-                <tr className='text-warning'>
-                    <OverlayTrigger
-                        placement="right"
-                        delay={{show: 0, hide: 0}}
-                        overlay={
-                            <Tooltip>
-                                <div dangerouslySetInnerHTML={createMarkup(1)}></div>
-                            </Tooltip>
-                        }>
-                        <td>{(workout && workout.length !== 0) ? workout[1].name : 'Loading...'}</td>
-                    </OverlayTrigger>
-                    <td>40s</td>
-                    <td>20s</td>
-                </tr>
-                <tr className='text-warning'>
-                    <OverlayTrigger
-                        placement="right"
-                        delay={{show: 0, hide: 0}}
-                        overlay={
-                            <Tooltip>
-                                <div dangerouslySetInnerHTML={createMarkup(2)}></div>
-                            </Tooltip>
-                        }>
-                        <td>{(workout && workout.length !== 0) ? workout[2].name : 'Loading...'}</td>
-                    </OverlayTrigger>
-                    <td>40s</td>
-                    <td>20s</td>
-                </tr>
-                <tr>
-                    <td colSpan={4} className='text-center'>Water Break (1min)</td>
-                </tr>
-                <tr className='text-warning'>
-                    <OverlayTrigger
-                        placement="right"
-                        delay={{show: 0, hide: 0}}
-                        overlay={
-                            <Tooltip>
-                                <div dangerouslySetInnerHTML={createMarkup(3)}></div>
-                            </Tooltip>
-                        }>
-                        <td>{(workout && workout.length !== 0) ? workout[3].name : 'Loading...'}</td>
-                    </OverlayTrigger>
-                    <td>40s</td>
-                    <td>20s</td>
-                    <td rowSpan='3' className='text-center align-middle'>3</td>
-                </tr>
-                <tr className='text-warning'>
-                    <OverlayTrigger
-                        placement="right"
-                        delay={{show: 0, hide: 0}}
-                        overlay={
-                            <Tooltip>
-                                <div dangerouslySetInnerHTML={createMarkup(4)}></div>
-                            </Tooltip>
-                        }>
-                        <td>{(workout && workout.length !== 0) ? workout[4].name : 'Loading...'}</td>
-                    </OverlayTrigger>
-                    <td>40s</td>
-                    <td>20s</td>
-                </tr>
-                <tr className='text-warning'>
-                    <OverlayTrigger
-                        placement="right"
-                        delay={{show: 0, hide: 0}}
-                        overlay={
-                            <Tooltip>
-                                <div dangerouslySetInnerHTML={createMarkup(5)}></div>
-                            </Tooltip>
-                        }>
-                        <td>{(workout && workout.length !== 0) ? workout[5].name : 'Loading...'}</td>
-                    </OverlayTrigger>
-                    <td>40s</td>
-                    <td>20s</td>
-                </tr>
-                <tr>
-                    <td colSpan={4} className='text-center'>Water Break (1min)</td>
-                </tr>
-                <tr>
-                    <td colSpan={4} className='text-center'>Cool Down (5min)</td>
-                </tr>
-                </tbody>
-            </Table>
-            <div>
-                <Button variant="dark" onClick={softRefresh}>Refresh Exercises</Button>
-            </div>
-            <br/>
-            <iframe src="https://open.spotify.com/embed/playlist/0Q59bcVkdMTrh6nZF4gopH" mx="auto" height="82px" frameBorder="0"
-                    allowTransparency="true" allow="encrypted-media"></iframe>
+        <div className="container-fluid homepage-bg">
+            <Col className='align-self-center'>
+                <h1 className='text-center text-warning pb-3 pt-3'>Let's Get Moving!</h1>
+                <Container>
+                    <Table striped bordered variant="dark" size='sm' style={{fontSize: 'large'}}>
+                        <thead>
+                        <tr className='text-center'>
+                            <th>Activity</th>
+                            <th>Work</th>
+                            <th>Rest</th>
+                            <th>Sets</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td colSpan={4} className='text-center'>Warm Up (5min)</td>
+                        </tr>
+                        <tr className='text-warning'>
+                            <OverlayTrigger
+                                placement="right"
+                                delay={{show: 0, hide: 0}}
+                                overlay={
+                                    <Tooltip>
+                                        <div dangerouslySetInnerHTML={createMarkup(0)}></div>
+                                    </Tooltip>
+                                }>
+                                <td>{(workout && workout.length !== 0) ? workout[0].name : 'Loading...'}</td>
+                            </OverlayTrigger>
+                            <td>40s</td>
+                            <td>20s</td>
+                            <td rowSpan='3' className='text-center align-middle'>3</td>
+                        </tr>
+                        <tr className='text-warning'>
+                            <OverlayTrigger
+                                placement="right"
+                                delay={{show: 0, hide: 0}}
+                                overlay={
+                                    <Tooltip>
+                                        <div dangerouslySetInnerHTML={createMarkup(1)}></div>
+                                    </Tooltip>
+                                }>
+                                <td>{(workout && workout.length !== 0) ? workout[1].name : 'Loading...'}</td>
+                            </OverlayTrigger>
+                            <td>40s</td>
+                            <td>20s</td>
+                        </tr>
+                        <tr className='text-warning'>
+                            <OverlayTrigger
+                                placement="right"
+                                delay={{show: 0, hide: 0}}
+                                overlay={
+                                    <Tooltip>
+                                        <div dangerouslySetInnerHTML={createMarkup(2)}></div>
+                                    </Tooltip>
+                                }>
+                                <td>{(workout && workout.length !== 0) ? workout[2].name : 'Loading...'}</td>
+                            </OverlayTrigger>
+                            <td>40s</td>
+                            <td>20s</td>
+                        </tr>
+                        <tr>
+                            <td colSpan={4} className='text-center'>Water Break (1min)</td>
+                        </tr>
+                        <tr className='text-warning'>
+                            <OverlayTrigger
+                                placement="right"
+                                delay={{show: 0, hide: 0}}
+                                overlay={
+                                    <Tooltip>
+                                        <div dangerouslySetInnerHTML={createMarkup(3)}></div>
+                                    </Tooltip>
+                                }>
+                                <td>{(workout && workout.length !== 0) ? workout[3].name : 'Loading...'}</td>
+                            </OverlayTrigger>
+                            <td>40s</td>
+                            <td>20s</td>
+                            <td rowSpan='3' className='text-center align-middle'>3</td>
+                        </tr>
+                        <tr className='text-warning'>
+                            <OverlayTrigger
+                                placement="right"
+                                delay={{show: 0, hide: 0}}
+                                overlay={
+                                    <Tooltip>
+                                        <div dangerouslySetInnerHTML={createMarkup(4)}></div>
+                                    </Tooltip>
+                                }>
+                                <td>{(workout && workout.length !== 0) ? workout[4].name : 'Loading...'}</td>
+                            </OverlayTrigger>
+                            <td>40s</td>
+                            <td>20s</td>
+                        </tr>
+                        <tr className='text-warning'>
+                            <OverlayTrigger
+                                placement="right"
+                                delay={{show: 0, hide: 0}}
+                                overlay={
+                                    <Tooltip>
+                                        <div dangerouslySetInnerHTML={createMarkup(5)}></div>
+                                    </Tooltip>
+                                }>
+                                <td>{(workout && workout.length !== 0) ? workout[5].name : 'Loading...'}</td>
+                            </OverlayTrigger>
+                            <td>40s</td>
+                            <td>20s</td>
+                        </tr>
+                        <tr>
+                            <td colSpan={4} className='text-center'>Water Break (1min)</td>
+                        </tr>
+                        <tr>
+                            <td colSpan={4} className='text-center'>Cool Down (5min)</td>
+                        </tr>
+                        </tbody>
+                    </Table>
+                </Container>
+
+                <div className='row justify-content-center text-decoration-none'>
+                    <Button className='align-self-center' variant="danger" onClick={softRefresh}>Refresh
+                        Exercises</Button>
+                </div>
+                <br/>
+                <div className='row justify-content-center text-decoration-none'>
+                    <iframe src="https://open.spotify.com/embed/playlist/6qgv7sIYQlJUFQg9aXjz8Q" mx="auto" height="82px"
+                            frameBorder="0"
+                            allowTransparency="true" allow="encrypted-media"></iframe>
+                </div>
+            </Col>
         </div>
     );
 }

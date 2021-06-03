@@ -21,8 +21,7 @@ function App() {
         return (
        <BrowserRouter>
            <Navigation />
-           <Container className="mt-4">
-
+           <div>
                <Switch>
                    <Route path="/" exact>
                        <HomeView
@@ -57,8 +56,7 @@ function App() {
                        />
                    </Route>
                </Switch>
-
-           </Container>
+           </div>
        </BrowserRouter>
     );
 }

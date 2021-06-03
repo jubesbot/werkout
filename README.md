@@ -1,12 +1,20 @@
-# Getting Started with Create React App
+# WERKOUT - General Assembly Project #2 (React Application)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+This WERKOUT application serves to motivate the unmotivated with a chirpy quote of the day. Mainly, it generates exercises which the user can perform to keep fit at home, taking in two criterias - availability of equipment, and parts of the body which the user wishes to work on. This will be particularly useful during the pseudo-Circuit Breaker aka Phase 2 (Heightened Alert).
 
-### `npm start`
+## Technologies Used
+
+Technologies used helped build this project.
+
+- React
+- Bootstrap with React
+- React-router-dom
+- Axios for API
+
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
