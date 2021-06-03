@@ -5,7 +5,7 @@
 body, #root, .div {
   margin: 0;
   font-family: 'Odibee Sans', cursive;
-  font-size: 1em;
+  font-size: small;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

@@ -79,7 +79,7 @@ function WorkoutView({saveFinal, setSaveFinal, workout, setWorkout, setRefresh, 
                             </OverlayTrigger>
                             <td>40s</td>
                             <td>20s</td>
-                            <td rowSpan='3' className='text-center align-middle'>3</td>
+                            <td rowSpan='3' className='text-center align-middle'>4</td>
                         </tr>
                         <tr className='text-warning'>
                             <OverlayTrigger
@@ -125,7 +125,7 @@ function WorkoutView({saveFinal, setSaveFinal, workout, setWorkout, setRefresh, 
                             </OverlayTrigger>
                             <td>40s</td>
                             <td>20s</td>
-                            <td rowSpan='3' className='text-center align-middle'>3</td>
+                            <td rowSpan='3' className='text-center align-middle'>4</td>
                         </tr>
                         <tr className='text-warning'>
                             <OverlayTrigger

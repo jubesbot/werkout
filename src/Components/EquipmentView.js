@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Card, CardDeck, CardGroup, Col, Container, Row} from "react-bootstrap";
+import {Button, Card, CardDeck, Col, Row} from "react-bootstrap";
 import {NavLink} from "react-router-dom";
 
 function EquipmentView({equipment, setEquipment}) {

@@ -23,7 +23,7 @@ function HomeView({quote, setQuote}) {
                 <Card.ImgOverlay className='d-flex' style={{fontFamily: 'Budmo Jiggler', fontSize: '2em'}}>
                     <NavLink to="/equipment"
                              className='align-self-center text-center border bg-dark mx-auto text-decoration-none text-white p-3'>
-                        <Card.Title className='p-3' style={{fontSize: '40px'}}>Generate a 30-min workout
+                        <Card.Title className='p-3' style={{fontSize: '40px'}}>Generate a 35-min workout
                             here!</Card.Title>
                         <Card.Body className='text-warning'>{quote.text}
                             <footer

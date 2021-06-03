@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {BrowserRouter, Switch, Route} from "react-router-dom";
 
 import './App.css';
-import {Container} from "react-bootstrap";
 import HomeView from "./Components/HomeView";
 import EquipmentView from "./Components/EquipmentView";
 import CategoryView from "./Components/CategoryView";
