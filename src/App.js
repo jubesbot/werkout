@@ -11,6 +11,7 @@ import Navigation from "./Components/Navigation";
 
 function App() {
 
+    const [quote, setQuote] = useState('')
     const [equipment, setEquipment] = useState([])
     const [category, setCategory] = useState([])
     const [workout, setWorkout] = useState([])
@@ -24,7 +25,10 @@ function App() {
 
                <Switch>
                    <Route path="/" exact>
-                       <HomeView />
+                       <HomeView
+                           quote={quote}
+                           setQuote={setQuote}
+                       />
                    </Route>
                    <Route path="/equipment" >
                        <EquipmentView

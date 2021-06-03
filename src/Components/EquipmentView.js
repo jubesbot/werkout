@@ -17,12 +17,12 @@ function EquipmentView({equipment, setEquipment}) {
                 <Col md={6}>
                     <Card>
                         <Card.Img variant="top" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80"/>
-                        <Card.Body>
+                        <Card.Body className='text-center'>
                             <Card.Title>Body Weight</Card.Title>
                             <Card.Text>
                                 Your workout will consist of body weight exercises only.
                             </Card.Text>
-                            <NavLink to='/category' onClick={selectEquipment}>
+                            <NavLink to='/category' onClick={selectEquipment} className='row justify-content-center text-decoration-none'>
                                 <Button variant="outline-dark light" value={7}>Let's go!</Button>
                             </NavLink>
                         </Card.Body>
@@ -32,12 +32,12 @@ function EquipmentView({equipment, setEquipment}) {
                 <Col md={6}>
                     <Card>
                         <Card.Img variant="top" src="https://images.unsplash.com/photo-1562771242-a02d9090c90c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1502&q=80"/>
-                        <Card.Body>
-                            <Card.Title>Dumbbells</Card.Title>
+                        <Card.Body className='text-center'>
+                            <Card.Title>Dumbbells / Filled water bottles</Card.Title>
                             <Card.Text>
                                 Your workout will consist of body weight and dumbbell exercises.
                             </Card.Text>
-                            <NavLink to='/category' onClick={selectEquipment}>
+                            <NavLink to='/category' onClick={selectEquipment} className='row justify-content-center text-decoration-none'>
                                 <Button variant="outline-dark light" value={3}>Try me!</Button>
                             </NavLink>
                         </Card.Body>

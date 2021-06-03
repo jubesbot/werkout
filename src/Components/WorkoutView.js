@@ -79,8 +79,8 @@ function WorkoutView({saveFinal, setSaveFinal, workout, setWorkout, setRefresh, 
 
     return (
         <div>
-            <h1 className='text-center'>30min Workout</h1>
-            <Table striped bordered variant="dark" size='sm'>
+            <h1 className='text-center'>Let's Get Moving!</h1>
+            <Table striped bordered variant="dark" size='sm' style={{fontSize: 'large'}}>
                 <thead>
                 <tr className='text-center'>
                     <th>Activity</th>
@@ -190,9 +190,9 @@ function WorkoutView({saveFinal, setSaveFinal, workout, setWorkout, setRefresh, 
                 </tr>
                 </tbody>
             </Table>
-
-            <Button variant="dark" onClick={softRefresh}>Refresh Exercises</Button>
-
+            <div>
+                <Button variant="dark" onClick={softRefresh}>Refresh Exercises</Button>
+            </div>
         </div>
     );
 }

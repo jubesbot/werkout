@@ -1,19 +1,19 @@
 import React, {useEffect} from 'react';
-import {Button, Card, CardDeck} from "react-bootstrap";
+import {Button, Card, CardDeck, Col, Row} from "react-bootstrap";
 import axios from "axios";
 import {NavLink} from "react-router-dom";
 
-function CategoryView({ equipment, category, setCategory, saveFinal, setSaveFinal}) {
+function CategoryView({equipment, category, setCategory, saveFinal, setSaveFinal}) {
 
-    useEffect(()=>{
+    useEffect(() => {
         axios.get('https://wger.de/api/v2/exercisecategory?limit=1000')
-            .then(res=>{
+            .then(res => {
                 let tempCat = res.data.results.map((part) => {
-                   return ({...part, image : require(`../img/${part.name}.jpg`).default})
+                    return ({...part, image: require(`../img/${part.name}.jpg`).default})
                 })
                 setCategory(tempCat)
             })
-    },[setCategory])
+    }, [setCategory])
 
     function selectCategory(e, id) {
         e.stopPropagation()
@@ -22,13 +22,14 @@ function CategoryView({ equipment, category, setCategory, saveFinal, setSaveFina
         let temp = [...saveFinal]
         let foundIndex = temp.indexOf(id)
         // console.log("found index",foundIndex)
-        if(temp.length === 3 && foundIndex > 0) {
+        if (temp.length === 3 && foundIndex > 0) {
             temp.splice(foundIndex, 1)
 
-        }if (foundIndex > -1) {
+        }
+        if (foundIndex > -1) {
             temp.splice(foundIndex, 1)
             e.target.style.border = 'none'
-        } else if (foundIndex < 0 && temp.length < 3){
+        } else if (foundIndex < 0 && temp.length < 3) {
 
             temp.push(id)
             e.target.style.border = '1px dashed black'
@@ -36,8 +37,8 @@ function CategoryView({ equipment, category, setCategory, saveFinal, setSaveFina
         setSaveFinal(temp)
     }
 
-    function goToWorkout(){
-        setSaveFinal(prevState => [...equipment,...prevState])
+    function goToWorkout() {
+        setSaveFinal(prevState => [...equipment, ...prevState])
     }
 
     console.log(category)
@@ -46,21 +47,27 @@ function CategoryView({ equipment, category, setCategory, saveFinal, setSaveFina
 
     return (
         <div>
-
             <h1 className='text-center'>What do you want to work on? (Pick 3)</h1>
+
 
             <CardDeck>
                 {category.map(part => (
-            <Card key={part.id} className="bg-transparent text-white" >
-                <Card.Img src={part.image} alt="Card image"/>
-                <Button className='mt-3 mb-3' variant="none" onClick={(e) => selectCategory(e, part.id)}>{part.name}</Button>
-            </Card>
+
+                    <Col md={3} className="p-2 mx-auto">
+                        <Card key={part.id} className="bg-transparent text-white">
+                            <Card.Img src={part.image} alt="Card image"/>
+                            <Button className='mt-3 mb-3' variant="none"
+                                    style={{ fontSize: '1.5em'}}
+                                    onClick={(e) => selectCategory(e, part.id)}>{part.name}</Button>
+                        </Card>
+                    </Col>
+
                 ))}
             </CardDeck>
 
-            <hr/>
-            <NavLink to='/workout' onClick={goToWorkout}>
-                <Button variant="dark" disabled={saveFinal.length<3} >Generate Workout</Button>
+            <br/>
+            <NavLink to='/workout' onClick={goToWorkout} className='row justify-content-center text-decoration-none'>
+                <Button variant="dark" disabled={saveFinal.length < 3}>Generate Workout</Button>
             </NavLink>
 
         </div>

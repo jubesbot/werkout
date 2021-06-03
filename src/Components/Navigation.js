@@ -1,22 +1,23 @@
 import React from 'react';
 import {Container, Navbar} from "react-bootstrap";
+import {bounce} from "react-animations";
 
 function Navigation(props) {
     return (
-        <Navbar bg="light" expand="lg">
-            <Container >
-                <Navbar.Brand href="/"  className='mx-auto'>WERKOUT</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                {/*<Navbar.Collapse id="basic-navbar-nav">*/}
-                {/*/!*<Nav className="mr-auto">*!/*/}
-                {/*/!*    <NavLink to="/equipment">equipment</NavLink>*!/*/}
-                {/*/!*    /!*<NavLink to="/category">category</NavLink>*!/*!/*/}
-                {/*/!*    <NavLink to="/workout">workout</NavLink>*!/*/}
-                {/*/!*</Nav>*!/*/}
-                {/*</Navbar.Collapse>*/}
+        <Navbar bg="dark" expand="lg">
+            <Container>
+                <Navbar.Brand href="/"  className='mx-auto' style={{ fontFamily: 'Budmo Jiggler', fontSize: '4em', color: 'white', animation: 'bounce'}}>WERKOUT</Navbar.Brand>
             </Container>
         </Navbar>
     );
 }
 
 export default Navigation;
+
+{/*<Navbar.Collapse id="basic-navbar-nav">*/}
+{/*/!*<Nav className="mr-auto">*!/*/}
+{/*/!*    <NavLink to="/equipment">equipment</NavLink>*!/*/}
+{/*/!*    /!*<NavLink to="/category">category</NavLink>*!/*!/*/}
+{/*/!*    <NavLink to="/workout">workout</NavLink>*!/*/}
+{/*/!*</Nav>*!/*/}
+{/*</Navbar.Collapse>*/}
