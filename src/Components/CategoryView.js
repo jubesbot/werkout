@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {Button, Card, CardDeck, Col, Row} from "react-bootstrap";
+import {Button, Card, CardDeck, Col} from "react-bootstrap";
 import axios from "axios";
 import {NavLink} from "react-router-dom";
 
@@ -22,7 +22,7 @@ function CategoryView({equipment, category, setCategory, saveFinal, setSaveFinal
         let temp = [...saveFinal]
         let foundIndex = temp.indexOf(id)
         // console.log("found index",foundIndex)
-        if (temp.length === 3 && foundIndex > 0) {
+        if (temp.length < 3 && foundIndex > 0) {
             temp.splice(foundIndex, 1)
 
         }
@@ -47,21 +47,18 @@ function CategoryView({equipment, category, setCategory, saveFinal, setSaveFinal
 
     return (
         <div>
-            <h1 className='text-center'>What do you want to work on? (Pick 3)</h1>
-
+            <h1 className='text-center pb-3'>What do you want to work on? (Pick 3)</h1>
 
             <CardDeck>
                 {category.map(part => (
-
-                    <Col md={3} className="p-2 mx-auto">
-                        <Card key={part.id} className="bg-transparent text-white">
+                    <Col key={part.id} md={3} className="p-2 mx-auto">
+                        <Card className="bg-transparent text-white">
                             <Card.Img src={part.image} alt="Card image"/>
                             <Button className='mt-3 mb-3' variant="none"
                                     style={{ fontSize: '1.5em'}}
                                     onClick={(e) => selectCategory(e, part.id)}>{part.name}</Button>
                         </Card>
                     </Col>
-
                 ))}
             </CardDeck>
 

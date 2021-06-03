@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {Button, OverlayTrigger, Table, Tooltip} from "react-bootstrap";
 import axios from "axios";
 
@@ -34,31 +34,7 @@ function WorkoutView({saveFinal, setSaveFinal, workout, setWorkout, setRefresh, 
                 console.log(orderWorkout)
 
                 setWorkout(orderWorkout)
-                // function findDuplicates(arr) {
-                //     const filtered = arr.filter((item, index) => arr.indexOf(item) !== index);
-                //     return [...new Set(filtered)]
-                // }
-                // let uniqueWorkout = findDuplicates(tempWorkout)
 
-                // function delDupes(data, key){
-                //     return [
-                //         ...new Map(
-                //             data.map(x => [key(x),x])
-                //         ).values()
-                //     ]
-                // }
-                // let uniqueWorkout = delDupes(tempWorkout, it => it.id)
-                // console.log(uniqueWorkout)
-
-                // const uniqueWorkout = tempWorkout.reduce((acc, current) => {
-                //     const x = acc.find(item => item.id === current.id);
-                //     if (!x) {
-                //         return acc.concat([current]);
-                //     } else {
-                //         return acc;
-                //     }
-                // }, []);
-                // console.log(uniqueWorkout)
             })
 
     }, [setWorkout, setSaveFinal, refresh])
@@ -72,14 +48,9 @@ function WorkoutView({saveFinal, setSaveFinal, workout, setWorkout, setRefresh, 
         console.log(refresh)
     }
 
-    // console.log(workout)
-
-    // console.log(saveFinal)
-    // console.log(category)
-
     return (
         <div>
-            <h1 className='text-center'>Let's Get Moving!</h1>
+            <h1 className='text-center pb-3'>Let's Get Moving!</h1>
             <Table striped bordered variant="dark" size='sm' style={{fontSize: 'large'}}>
                 <thead>
                 <tr className='text-center'>
@@ -193,6 +164,9 @@ function WorkoutView({saveFinal, setSaveFinal, workout, setWorkout, setRefresh, 
             <div>
                 <Button variant="dark" onClick={softRefresh}>Refresh Exercises</Button>
             </div>
+            <br/>
+            <iframe src="https://open.spotify.com/embed/playlist/0Q59bcVkdMTrh6nZF4gopH" mx="auto" height="82px" frameBorder="0"
+                    allowTransparency="true" allow="encrypted-media"></iframe>
         </div>
     );
 }
@@ -209,3 +183,29 @@ export default WorkoutView;
 
 // console.log(Math.floor(Math.random()*(uniqueWorkout.length)+1))
 // console.log(uniqueWorkout[4].name)
+
+// function findDuplicates(arr) {
+//     const filtered = arr.filter((item, index) => arr.indexOf(item) !== index);
+//     return [...new Set(filtered)]
+// }
+// let uniqueWorkout = findDuplicates(tempWorkout)
+
+// function delDupes(data, key){
+//     return [
+//         ...new Map(
+//             data.map(x => [key(x),x])
+//         ).values()
+//     ]
+// }
+// let uniqueWorkout = delDupes(tempWorkout, it => it.id)
+// console.log(uniqueWorkout)
+
+// const uniqueWorkout = tempWorkout.reduce((acc, current) => {
+//     const x = acc.find(item => item.id === current.id);
+//     if (!x) {
+//         return acc.concat([current]);
+//     } else {
+//         return acc;
+//     }
+// }, []);
+// console.log(uniqueWorkout)

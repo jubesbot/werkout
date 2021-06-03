@@ -1,12 +1,14 @@
 import React from 'react';
 import {Container, Navbar} from "react-bootstrap";
-import {bounce} from "react-animations";
 
 function Navigation(props) {
+
     return (
         <Navbar bg="dark" expand="lg">
             <Container>
-                <Navbar.Brand href="/"  className='mx-auto' style={{ fontFamily: 'Budmo Jiggler', fontSize: '4em', color: 'white'}}>WERKOUT</Navbar.Brand>
+                <Navbar.Brand href="/"  className='mx-auto' style={{ fontFamily: 'Budmo Jiggler', fontSize: '4em', color: 'white'}}>
+                    WERKOUT
+                </Navbar.Brand>
             </Container>
         </Navbar>
     );
