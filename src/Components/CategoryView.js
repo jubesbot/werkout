@@ -47,7 +47,7 @@ function CategoryView({equipment, category, setCategory, saveFinal, setSaveFinal
 
     return (
         <div className="container-fluid homepage-bg">
-            <h1 className='text-center text-warning'>What do you want to work on? (Pick 3)</h1>
+            <h1 className='text-center text-warning pt-2 pb-0'>What do you want to work on? (Pick 3)</h1>
 
             <CardDeck>
                 {category.map(part => (

@@ -53,7 +53,7 @@ function WorkoutView({saveFinal, setSaveFinal, workout, setWorkout, setRefresh, 
             <Col className='align-self-center'>
                 <h1 className='text-center text-warning pb-3 pt-3'>Let's Get Moving!</h1>
                 <Container>
-                    <Table striped bordered variant="dark" size='sm' style={{fontSize: 'large'}}>
+                    <Table striped bordered variant="dark" size='sm' style={{fontSize: '1.5em'}}>
                         <thead>
                         <tr className='text-center'>
                             <th>Activity</th>
@@ -169,8 +169,7 @@ function WorkoutView({saveFinal, setSaveFinal, workout, setWorkout, setRefresh, 
                     <Button className='align-self-center' variant="danger" onClick={softRefresh}>Refresh
                         Exercises</Button>
                 </div>
-                <br/>
-                <div className='row justify-content-center text-decoration-none'>
+                <div className='row justify-content-center text-decoration-none pt-3'>
                     <iframe src="https://open.spotify.com/embed/playlist/6qgv7sIYQlJUFQg9aXjz8Q" mx="auto" height="82px"
                             frameBorder="0"
                             allowTransparency="true" allow="encrypted-media"></iframe>
