@@ -28,11 +28,10 @@ function CategoryView({equipment, category, setCategory, saveFinal, setSaveFinal
         }
         if (foundIndex > -1) {
             temp.splice(foundIndex, 1)
-            e.target.style.border = 'none'
+            e.target.classList.remove("btn-info")
         } else if (foundIndex < 0 && temp.length < 3) {
-
             temp.push(id)
-            e.target.style.border = '1px dashed black'
+            e.target.classList.add("btn-info")
         }
         setSaveFinal(temp)
     }
@@ -47,14 +46,14 @@ function CategoryView({equipment, category, setCategory, saveFinal, setSaveFinal
 
     return (
         <div className="container-fluid homepage-bg">
-            <h1 className='text-center text-warning pt-1 pb-0'>What do you want to work on? (Pick 3)</h1>
+            <h1 className='text-center text-warning pt-2 pb-1'>What do you want to work on? (Pick 3)</h1>
 
             <CardDeck>
                 {category.map(part => (
                     <Col key={part.id} md={3} className="p-1 mx-auto">
                         <Card className="bg-warning text-white">
                             <Card.Img src={part.image} alt="Card image"/>
-                            <Button className='mt-2 mb-2' variant="none"
+                            <Button variant="none"
                                     style={{fontSize: '1.5em'}}
                                     onClick={(e) => selectCategory(e, part.id)}>{part.name}</Button>
                         </Card>
