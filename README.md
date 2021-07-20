@@ -1,15 +1,3 @@
-# WERKOUT - General Assembly Project #2 (React Application)
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Description
-
-This WERKOUT application serves to actively engage and motivate the unmotivated with a chirpy quote of the day.
-
-Mainly, it generates a 35min workout which the user can perform to keep fit at home by taking in two criterias - availability of equipment, and parts of the body which the user wishes to work on.
-
-This will be particularly useful during the pseudo-Circuit Breaker aka Phase 2 (Heightened Alert).
-
 ### Technologies Used
 
 Technologies used to build this project.
